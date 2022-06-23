@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.wlp.mykt.example.User" />
+
+        <variable
+            name="vm"
+            type="com.wlp.mykt.example.FirstViewModel" />
+
+        <variable
+            name="vm2"
+            type="com.wlp.mykt.example.SecondViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".example.ViewDataBindingActivity">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name + ':' + user.age}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn"
+            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintStart_toStartOf="@id/text"
+            app:layout_constraintEnd_toEndOf="@id/text"
+            android:text="@{vm.text}"
+            android:onClick="@{() -> vm.add(2)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm2.mText}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

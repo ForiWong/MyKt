@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ImageView">
+        <attr name="url" format="string"/>
+        <attr name="isCircle" format="boolean"/>
+        <attr name="placeholderRes" format="reference|color" />
+        <attr name="ivSrc" format="reference|color" />
+        <attr name="roundedCorner" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="TextView">
+        <attr name="bindTextColor" format="reference|color" />
+        <attr name="bindTextStyle" format="integer" />
+    </declare-styleable>
+
+</resources>

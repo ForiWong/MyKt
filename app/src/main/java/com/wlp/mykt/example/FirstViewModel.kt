@@ -1,9 +1,9 @@
 package com.wlp.mykt.example
 
-import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.wlp.mykt.util.LogUtils
 
 private const val TAG = "FirstViewModel"
 class FirstViewModel : ViewModel() {
@@ -24,6 +24,6 @@ class FirstViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        Log.d(TAG, "lifecycle onCleared()")
+        LogUtils.d(TAG, "lifecycle onCleared()")
     }
 }

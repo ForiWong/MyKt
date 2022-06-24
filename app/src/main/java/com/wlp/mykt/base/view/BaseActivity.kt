@@ -5,13 +5,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModelProvider
 import com.wlp.mykt.base.viewmodel.BaseViewModel
+import com.wlp.mykt.ext.getVmClazz
 import com.wlp.mykt.util.LogUtils
 
 /**
  * Activity基类
  */
-abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity(),
+abstract class BaseActivity<VM : BaseViewModel, V : ViewDataBinding> : AppCompatActivity(),
     IBaseView {
     lateinit var binding: V
     lateinit var viewModel: VM
@@ -25,7 +27,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding()
         //私有的ViewModel与View的契约事件回调逻辑
-        registorUIChangeLiveDataCallBack()
+        registerUIChangeLiveDataCallBack()
 
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable()
@@ -88,12 +90,14 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
      *
      * @return 继承BaseViewModel的ViewModel
      */
-    abstract fun createViewModel(): VM
+    private fun createViewModel(): VM {
+        return ViewModelProvider(this)[getVmClazz(this)]
+    }
 
     /**
      * 注册ViewModel与View的契约UI回调事件
      */
-    protected fun registorUIChangeLiveDataCallBack() {
+    protected fun registerUIChangeLiveDataCallBack() {
         //加载对话框显示
         viewModel.uiChangeLiveData.showDialogEvent.observe(this) { title -> showDialog(title) }
         //加载对话框消失

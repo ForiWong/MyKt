@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.wlp.mykt.base.viewmodel.BaseViewModel
+import com.wlp.mykt.ext.getVmClazz
 import com.wlp.mykt.util.LogUtils
 
 /**
  * Description:Fragment基类
  */
-abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragment(),
+abstract class BaseFragment<VM : BaseViewModel, V : ViewDataBinding> : Fragment(),
     IBaseView {
     lateinit var binding: V
     lateinit var viewModel: VM
@@ -62,7 +64,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragment(
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding()
         //私有的ViewModel与View的契约事件回调逻辑
-        registorUIChangeLiveDataCallBack()
+        registerUIChangeLiveDataCallBack()
 
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable()
@@ -115,12 +117,14 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : Fragment(
      *
      * @return 继承BaseViewModel的ViewModel
      */
-    abstract fun createViewModel(): VM
+    private fun createViewModel(): VM {
+        return ViewModelProvider(this)[getVmClazz(this)]
+    }
 
     /**
      * 注册ViewModel与View的契约UI回调事件
      */
-    private fun registorUIChangeLiveDataCallBack() {
+    private fun registerUIChangeLiveDataCallBack() {
         //加载对话框显示
         viewModel.uiChangeLiveData.showDialogEvent.observe(viewLifecycleOwner) { title ->
             showDialog(

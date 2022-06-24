@@ -2,6 +2,7 @@ package com.wlp.mykt.example
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +11,7 @@ import com.wlp.mykt.databinding.ActivityVbBinding
 
 class ViewDataBindingActivity : AppCompatActivity() {
     private lateinit var viewModel2: SecondViewModel
+    private val secondViewModel:SecondViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

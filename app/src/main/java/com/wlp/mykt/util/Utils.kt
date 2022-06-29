@@ -1,61 +1,40 @@
-package com.wlp.mykt.util;
+package com.wlp.mykt.util
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.drawable.Drawable
+import androidx.core.content.ContextCompat
 
 /**
  * Description:用于工具类中获取上下文环境ApplicationContext
  */
-public final class Utils {
+@SuppressLint("StaticFieldLeak")
+object Utils {
 
-    @SuppressLint("StaticFieldLeak")
-    private static Context context;
+    lateinit var mContext: Context
 
-    private Utils() {
-        throw new UnsupportedOperationException("can't be instantiate.");
-    }
-
-    /**
-     * 初始化工具类
-     * @param context 上下文
-     */
-    public static void init(@NonNull final Context context) {
-        Utils.context = context.getApplicationContext();
-    }
-
-    /**
-     * 获取ApplicationContext
-     * @return ApplicationContext
-     */
-    public static Context getContext() {
-        if (context != null) {
-            return context;
-        }
-        throw new NullPointerException("should be initialized in application.");
+    fun init(context: Context) {
+        this.mContext = context.applicationContext
     }
 
     /**
      * 获取string资源
      */
-    public static String getStringRes(int res){
-        return getContext().getResources().getString(res);
+    fun getStringRes(res: Int): String {
+        return mContext.resources.getString(res)
     }
 
     /**c
      * 获取color资源
      */
-    public static int getColor(int colorResId){
-        return ContextCompat.getColor(getContext(), colorResId);
+    fun getColor(colorResId: Int): Int {
+        return ContextCompat.getColor(mContext, colorResId)
     }
 
     /**c
      * 获取drawable资源
      */
-    public static Drawable getDrawable(int drawableId){
-        return ContextCompat.getDrawable(getContext(), drawableId);
+    fun getDrawable(drawableId: Int): Drawable? {
+        return ContextCompat.getDrawable(mContext, drawableId)
     }
 }

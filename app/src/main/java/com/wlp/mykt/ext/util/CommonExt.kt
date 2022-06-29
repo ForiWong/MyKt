@@ -113,3 +113,11 @@ fun String.toHtml(flag: Int = Html.FROM_HTML_MODE_LEGACY): Spanned {
         Html.fromHtml(this)
     }
 }
+
+inline fun <reified T> String.getEmptyOrDefault(default: () -> T): T {
+    return if (isNullOrEmpty() || this == "null") {
+        default()
+    } else {
+        this as T
+    }
+}

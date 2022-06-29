@@ -12,6 +12,7 @@ import com.wlp.mykt.databinding.ActivityVbBinding
 class ViewDataBindingActivity : AppCompatActivity() {
     private lateinit var viewModel2: SecondViewModel
     private val secondViewModel:SecondViewModel by viewModels()
+    //private val user by lazy { User("abc", 12) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

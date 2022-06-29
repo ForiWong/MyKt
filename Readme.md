@@ -31,3 +31,20 @@ model
 自定义结果集封装类ResultState
 
 使用依赖注入的库dagger、Hilt
+
+ViewModel+LiveData+Repository实现MVVM的设计模式：
+Google于I/O大会上提出了Android Architecture Components，里面提到的架构化组件可以更好的帮助我们去做一些框架的工作。  
+而ViewModel的概念和 LiveData的可被观察性则让我看到了在Activity/Fragment/View（而不是xml文件）中实现双向绑定的可能性。
+
+repo中使用LiveData的弊端：
+a.不支持线程切换
+b.重度依赖 Lifecycle
+Repo 中常见的数据请求有两类
+    单发请求 suspend
+    流式请求 Flow
+
+App Startup组件
+startup: InitializationProvider androidx.startup.Initializer
+
+mapper 数据转换
+

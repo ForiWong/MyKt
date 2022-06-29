@@ -1,4 +1,4 @@
-package com.wlp.mykt.data.remote
+package com.wlp.mykt.data.api
 
 /**
  * Description: 密封类，处理成功或者失败的情况

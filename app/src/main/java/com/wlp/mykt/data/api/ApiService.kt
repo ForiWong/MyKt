@@ -1,4 +1,4 @@
-package com.wlp.mykt.data.remote
+package com.wlp.mykt.data.api
 
 import com.wlp.mykt.data.entity.AppVersionInfo
 import retrofit2.http.POST

@@ -1,6 +1,6 @@
 package com.wlp.mykt.data
 
-import com.wlp.mykt.data.remote.ApiService
+import com.wlp.mykt.data.api.ApiService
 import com.wlp.mykt.data.repository.ExampleRepositoryImpl
 import com.wlp.mykt.data.repository.ExampleRepository
 

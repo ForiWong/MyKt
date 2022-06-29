@@ -1,8 +1,8 @@
 package com.wlp.mykt.data.repository
 
 import com.wlp.mykt.data.entity.AppVersionInfo
-import com.wlp.mykt.data.remote.ApiService
-import com.wlp.mykt.data.remote.KtResult
+import com.wlp.mykt.data.api.ApiService
+import com.wlp.mykt.data.api.KtResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

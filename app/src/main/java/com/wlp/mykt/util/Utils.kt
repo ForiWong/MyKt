@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
+import com.wlp.mykt.base.AppProfile
 
 /**
  * Description:用于工具类中获取上下文环境ApplicationContext

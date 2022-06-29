@@ -15,7 +15,7 @@ V binding
 √ 创建viewmodel
 √ BaseViewModel
 √ 一个VM
-? 多个VM childViewModel的用法
+? 多个VM  childViewModel的用法
 Activity内部多个viewmodel? 实际上应该是可以多个的？
 但是如果可以多个的话？viewmodel之间如何同步数据呢？
 
@@ -47,4 +47,7 @@ App Startup组件
 startup: InitializationProvider androidx.startup.Initializer
 
 mapper 数据转换
+
+util
+//点击按钮重复点击
 
